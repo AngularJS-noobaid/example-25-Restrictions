@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+	
+<html>
+	<head>
+		<title>Restrictions</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	</head>	
+
+	<body>
+		<h1>AngularJS Tutorial: Directives </h1>
+
+		<div ng-app="myApp" ng-init="names=['HTML','CSS','JavaScript'];names2=[
+			{name:'HTML', role:'Content and Structure'},
+			{name:'CSS', role:'Style'},
+			{name:'JavaScript', role:'Dynamic Content'}]">
+
+			<h2>Example #1: Repeating HTML Elements</h2>
+			
+			<h3>Knowledge needed before learning AngularJS:</h3>
+  
+			<ul>
+    				<li ng-repeat="x in names">
+      					{{ x }}
+    				</li>
+  			</ul>
+
+
+			<h3>Languages and their Roles</h3>
+
+			<ul>
+				
+  				<li ng-repeat="x in names2">
+    					{{ x.name + ': ' + x.role }}
+  				</li>
+			</ul>
+
+			<h2>Example #2: Creating and Adding New Directives</h2>
+
+			<h3>Element name output:</h3>
+			<test-directive></test-directive>
+
+			<h3>Attribute name output:</h3>
+			<div test-directive></div>
+
+			<h3>Class name output:</h3>
+			<div class="test-directive"></div>
+
+			
+
+			<h2>Example #3: Restrictions</h2>
+
+			<h3>Element name output:</h3>
+			<test-directive2></test-directive2>
+
+			<h3>Attribute name output:</h3>
+			<div test-directive2></div>
+
+			<h3>Class name output:</h3>
+			<div class="test-directive2"></div>
+
+
+	
+		</div>
+
+		<script>
+			var app = angular.module("myApp", []);
+			app.directive("testDirective", function() {
+    				return {
+        				template:"<p>I am a paragraph element made by a directive</p>"
+    				};
+			});
+
+			app.directive("testDirective2", function() {
+    				return {
+					restrict: 'C', 
+        				template:"<p>I am a paragraph element made by a directive</p>"
+    				};
+			});
+		</script>
+
+		
+	</body>
+</html> 
